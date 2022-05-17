@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <html>
   <head>
     <% if (pageName) { %>
-    <title>BestBags | <%= pageName %></title>
+    <title>Our Store | <%= pageName %></title>
     <%} else {%>
     <title>Shopping Cart</title>
     <% } %>
@@ -52,24 +51,25 @@
     <div id="page-container">
       <div id="content-wrap">
     <div class="row nav-container mx-auto">
-      <div class="col-md-4 col-sm-12 col-xs-12">
-        <div class="search-container">
-          <form class="form-inline" action="/products/search" method="GET">
-            <input
-              class="search-input"
-              type="search"
-              placeholder="Search"
-              name="search"
-            />
-          </form>
-        </div>
-      </div>
 
       <div class="col-md-4 col-sm-12 col-xs-12 logo-container">
         <a href="/">
           <img class="logo-img img-fluid" src="/images/shop-icon.png" alt="logo" />
-          <h4 class="logo-title">BestBags</h4>
+          <h4 class="logo-title">Our Store</h4>
         </a>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="search-container">
+          <form class="form-inline" action="/products/search" method="GET">
+            <input
+            class="search-input"
+            type="search"
+            placeholder="Search"
+            name="search"
+            />
+          </form>
+        </div>
       </div>
 
       <div class="col-md-4 col-sm-12 col-xs-12 right-nav">
@@ -114,4 +114,3 @@
         </ul>
       </div>
     </div>
-

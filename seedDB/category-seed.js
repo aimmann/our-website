@@ -20,13 +20,13 @@ async function seedDB() {
     console.log("CLOSING CONNECTION");
     await mongoose.disconnect();
   }
-  await seedCateg("Backpacks");
-  await seedCateg("Briefcases");
-  await seedCateg("Mini Bags");
-  await seedCateg("Large Handbags");
-  await seedCateg("Travel");
-  await seedCateg("Totes");
-  await seedCateg("Purses");
+  await seedCateg("Kitchen");
+  await seedCateg("Men's wear");
+  await seedCateg("Shoes");
+  await seedCateg("Smartphones");
+  await seedCateg("Toys");
+  await seedCateg("Tvs");
+  await seedCateg("Watches");
   await closeDB();
 }
 

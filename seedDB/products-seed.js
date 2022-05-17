@@ -139,30 +139,6 @@ async function seedDB() {
     "https://p1.pxfuel.com/preview/57/634/392/purse-bag-handbag-fashion.jpg",
   ];
 
-  //-----------------------Purses
-  const purses_titles = [
-    "Hot Pink Leather Purse",
-    "Glittery Black Purse with Golden Strap",
-    "Practical Black Leather Purse",
-    "Red Leather Pouche with Free Earrings",
-    "Lavender Leather Purse",
-    "White and Black Snakeskin Purse",
-    "Dark Brown Simple Purse",
-    "Red Kipling Pouche",
-    "Biege Kipling Pouche",
-  ];
-  const purses_imgs = [
-    "https://c.pxhere.com/photos/c2/fc/bag_fashion_style-518806.jpg!d",
-    "https://images.unsplash.com/photo-1564222195116-8a74a96b2c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
-    "https://c.pxhere.com/photos/cb/9e/wallet_black_clutch_purse_leather_fashion_style_accessory-952715.jpg!d",
-    "https://c.pxhere.com/photos/63/90/purse_handbag_fashion_bag_style_design_leather_accessory-780266.jpg!d",
-    "https://c.pxhere.com/photos/2d/da/wallet_purple_wallet_purple_money_purse_billfold_lavender_fashion-863005.jpg!d",
-    "https://images.unsplash.com/photo-1563904092230-7ec217b65fe2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
-    "https://www.publicdomainpictures.net/pictures/60000/velka/leather-purse-isolated-background.jpg",
-    "https://c.pxhere.com/photos/94/29/bag_handbag_purse_pink_red_fashion_glamour_accessory-952105.jpg!d",
-    "https://c.pxhere.com/photos/9b/57/bag_purse_handbag_fashion_style_accessory_white-1336949.jpg!d",
-  ];
-
   //-----------------Totes
 
   const totes_titles = [
@@ -191,6 +167,30 @@ async function seedDB() {
     "https://p1.pxfuel.com/preview/726/975/813/bag-handbag-womans-bag-sport-bag.jpg",
     "https://p1.pxfuel.com/preview/844/198/547/bag-burlap-advertising.jpg",
   ];
+  //-----------------------Purses
+  const purses_titles = [
+    "Hot Pink Leather Purse",
+    "Glittery Black Purse with Golden Strap",
+    "Practical Black Leather Purse",
+    "Red Leather Pouche with Free Earrings",
+    "Lavender Leather Purse",
+    "White and Black Snakeskin Purse",
+    "Dark Brown Simple Purse",
+    "Red Kipling Pouche",
+    "Biege Kipling Pouche",
+  ];
+  const purses_imgs = [
+    "https://c.pxhere.com/photos/c2/fc/bag_fashion_style-518806.jpg!d",
+    "https://images.unsplash.com/photo-1564222195116-8a74a96b2c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
+    "https://c.pxhere.com/photos/cb/9e/wallet_black_clutch_purse_leather_fashion_style_accessory-952715.jpg!d",
+    "https://c.pxhere.com/photos/63/90/purse_handbag_fashion_bag_style_design_leather_accessory-780266.jpg!d",
+    "https://c.pxhere.com/photos/2d/da/wallet_purple_wallet_purple_money_purse_billfold_lavender_fashion-863005.jpg!d",
+    "https://images.unsplash.com/photo-1563904092230-7ec217b65fe2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80",
+    "https://www.publicdomainpictures.net/pictures/60000/velka/leather-purse-isolated-background.jpg",
+    "https://c.pxhere.com/photos/94/29/bag_handbag_purse_pink_red_fashion_glamour_accessory-952105.jpg!d",
+    "https://c.pxhere.com/photos/9b/57/bag_purse_handbag_fashion_style_accessory_white-1336949.jpg!d",
+  ];
+
 
   async function seedProducts(titlesArr, imgsArr, categStr) {
     try {
@@ -219,13 +219,13 @@ async function seedDB() {
     await mongoose.disconnect();
   }
 
-  await seedProducts(backpacks_titles, backpacks_imgs, "Backpacks");
-  await seedProducts(briefcases_titles, briefcases_imgs, "Briefcases");
-  await seedProducts(travel_titles, travel_imgs, "Travel");
-  await seedProducts(miniBags_titles, miniBags_imgs, "Mini Bags");
-  await seedProducts(largeHandbags_titles,largeHandbags_imgs,"Large Handbags");
-  await seedProducts(purses_titles, purses_imgs, "Purses");
-  await seedProducts(totes_titles, totes_imgs, "Totes");
+  await seedProducts(backpacks_titles, backpacks_imgs, "Kitchen");
+  await seedProducts(briefcases_titles, briefcases_imgs, "Men's wear");
+  await seedProducts(miniBags_titles, miniBags_imgs, "Shoes");
+  await seedProducts(largeHandbags_titles,largeHandbags_imgs,"Smartphones");
+  await seedProducts(travel_titles, travel_imgs, "Toys");
+  await seedProducts(totes_titles, totes_imgs, "Tvs");
+  await seedProducts(purses_titles, purses_imgs, "Watches");
 
   await closeDB();
 }
