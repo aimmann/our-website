@@ -126,7 +126,7 @@ a:hover,
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: 95% center;
-  border-radius: 50px;
+  border-radius: 10px;
   border: 1px solid #575756;
   transition: all 250ms ease-in-out;
   backface-visibility: hidden;
@@ -318,6 +318,7 @@ hr.gradient-style {
 .img-small {
   height: 5%;
   margin: 2px;
+  width: 40%;
 }
 
 .qty-display {
