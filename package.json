@@ -8,6 +8,9 @@
   },
   "author": "wael saad",
   "license": "MIT",
+  "engines": {
+    "node": "16.14.0"
+  },
   "dependencies": {
     "admin-bro": "^2.9.0",
     "admin-bro-expressjs": "^2.1.1",
