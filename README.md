@@ -1,4 +1,4 @@
-# BestBags
+# our-store
 
 ## Table of contents
 
