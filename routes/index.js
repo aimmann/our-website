@@ -14,6 +14,7 @@ router.use(csrfProtection);
 // GET: home page
 router.get("/", async (req, res) => {
   try {
+
     const products = await Product.find({})
       .sort("-createdAt")
       .populate("category");

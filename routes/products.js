@@ -3,6 +3,12 @@ const router = express.Router();
 const Product = require("../models/product");
 const Category = require("../models/category");
 var moment = require("moment");
+const Review = require("../models/review");
+const user = require("../models/user");
+const { json } = require("express");
+const fs = require ("fs");
+
+let data = fs.readFileSync("../senanalysis/afinn1.json");
 
 // GET: display all products
 router.get("/", async (req, res) => {
@@ -107,15 +113,71 @@ router.get("/:slug", async (req, res) => {
 router.get("/:slug/:id", async (req, res) => {
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
+  let user ; 
   try {
     const product = await Product.findById(req.params.id).populate("category");
+    const dbreview = await Review.find({product:req.params.id}).populate("user");
+    let overAllScore = 0;
+    let count = 0;
+    dbreview.forEach((review , index) => {
+      overAllScore += dbreview[index].score;
+      count++;
+    })
+    if(overAllScore !=0){
+    overAllScore /= count;
+    overAllScore = (Math.round(overAllScore * 100) / 100).toFixed(1); 
+    }else{
+      overAllScore = "0.0";
+    }
     res.render("shop/product", {
       pageName: product.title,
       product,
       successMsg,
       errorMsg,
+      dbreview: dbreview ? dbreview : false ,
       moment: moment,
+      user: req.user ? req.user : false , 
+      overAllScore,
+      count,
     });
+  } catch (error) {
+    console.log(error);
+    return res.redirect("/");
+  }
+});
+
+router.post("/:slug/:id", async (req, res) => {
+  const successMsg = req.flash("success")[0];
+  const errorMsg = req.flash("error")[0];
+
+  try {
+    // the logic for the review score
+    let afinn = JSON.parse(data);
+    let afinnKeys = Object.keys(afinn);
+    let reviewArr = req.body.takethis.split(/\s/);
+    let acumulativeScore = 0;
+    let avgScore = 0;
+    var count = 1;
+    reviewArr.forEach((word,index) => {
+      afinnKeys.forEach((key,index) => {
+        if(key == word){
+            var score = Number(afinn[word]);
+            acumulativeScore += ((score + 5)/2);
+            avgScore = acumulativeScore/count++;
+        }
+    })
+}); 
+
+
+    const rev = await new Review({
+      user: req.session.passport.user,
+      product: req.params.id,
+      reviewBody: req.body.takethis,
+      score: avgScore,
+    });
+    await rev.save();
+    res.redirect("back");
+
   } catch (error) {
     console.log(error);
     return res.redirect("/");

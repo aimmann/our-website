@@ -23,14 +23,14 @@
   </div>
   <!-- Product info -->
   <div class="row mt-4 mb-4">
-    <div class="col-md-5 mt-2 mr-2 ml-auto">
+    <div class="col-md-5 mt-2  ml-auto">
       <img
         src="<%=product.imagePath%>"
         class="img-fluid product-img"
         alt="product image"
       />
     </div>
-    <div class="col-md-5 mt-2 mb-2 ml-2 mr-auto text-dark">
+    <div class="col-md-5 mt-2 mb-2  mr-auto text-dark">
       <h2><%=product.title%></h2>
       <hr />
       <p class="price">USD $<%=product.price%></p>
@@ -50,7 +50,42 @@
       <% } else { %>
       <p class="is-not-available text-center">Sold out</p>
       <%} %>
+      </div>
+    <div class="col-md-2 mt-2  ml-auto">
+     <div class="d-flex row py-2 px-auto  bg-light">
+					<div class="green-tab p-2 px-3 mx-lg-auto">
+						<p class="sm-text mb-0">OVERALL RATING</p>
+						<h4><%= overAllScore %></h4>
+					</div>
+					<div class="white-tab p-2 mx-lg-auto  text-muted">
+						<p class="sm-text mb-0">ALL REVIEWS</p>
+						<h4><%= count %></h4>
+					</div>
+				</div> 
     </div>
   </div>
-</div>
+  <!--the review section-->
+  <% if(dbreview) {%>
+  <div class="row">
+    <% dbreview.forEach((review,index) => { %>
+    <div class="col-md-5 rev">
+      <h4><%=dbreview[index].user.username%></h4>
+     <p class="rev-body"><%= dbreview[index].reviewBody%> </p>
+     <p class="time"><%= dbreview[index].createdAt.toUTCString()%></p>
+    </div><% }); %>
+  <%}%>
+    
+  </div> 
+  <!--review form-->
+  <% if(user){ %>
+  <div class="container rev-form">
+  <form action="/products/<%=product.category.slug%>/<%=product._id%>" method="post">
+    <div class="form-group shadow-textarea">
+      <label for="textarea">Review the product</label>
+      <textarea name= "takethis" class="form-control z-depth-1" id="textarea" rows="3" placeholder="Write something here..."></textarea>
+      <button type="submit" class="btn mt-2 button-style ">Submit</button>
+    </div> 
+  </form>
+  </div>
+<% } %>
 <%- include ../partials/footer %>
